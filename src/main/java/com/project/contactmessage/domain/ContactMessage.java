@@ -30,7 +30,7 @@ public class ContactMessage implements Serializable {
     private String name;
 
     @NotNull
-    private String mail;
+    private String email;
 
     @NotNull
     private String subject;
