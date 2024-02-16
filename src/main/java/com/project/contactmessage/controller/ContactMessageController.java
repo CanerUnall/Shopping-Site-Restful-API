@@ -10,6 +10,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.util.List;
 
 @RestController
 @RequiredArgsConstructor
@@ -50,10 +51,55 @@ public class ContactMessageController {
 
         return contactMessageService.getByEmail(email, page, size, sort, type);
     }
-
     @DeleteMapping("/deleteById/{contactMessageId}")
     public ResponseEntity<String> deleteByIdPath(@PathVariable Long contactMessageId) {
         return ResponseEntity.ok(contactMessageService.deleteById(contactMessageId));
+    }
+
+    /*@GetMapping("getBetweenDates")
+    public ResponseMessage<List<ContactMessage>> getBetweenDates(@RequestParam(value = "beginDate") String beginDateString,
+                                                                 @RequestParam(value = "enDate") String endDateString){
+        return contactMessageService.getBetweenDates(beginDateString,endDateString);
+    }*/
+
+    @GetMapping("getBetweenDates")
+    public ResponseMessage<List<ContactMessageResponse>> getBetweenDates(@RequestParam(value = "beginDate") String beginDateString,
+                                                                 @RequestParam(value = "enDate") String endDateString){
+        return contactMessageService.getBetweenDates(beginDateString,endDateString);
+    }
+
+    /*@GetMapping("/getBetweenTimes")
+    public ResponseEntity<List<ContactMessage>> getBetweenTimes(@RequestParam(value = "startHour") String startHourString,
+                                                                @RequestParam(value = "endHour") String endHourString,
+                                                                @RequestParam(value = "startMinute") String startMinuteString,
+                                                                @RequestParam(value = "endMinute") String endMinuteString){
+
+        List<ContactMessage> allMessages = contactMessageService.getBetweenTimes(startHourString,startMinuteString,endHourString,endMinuteString);
+
+        return ResponseEntity.ok(allMessages);
+    }*/
+
+    @GetMapping("/getBetweenTimes")
+    public ResponseEntity<List<ContactMessageResponse>> getBetweenTimes(@RequestParam(value = "startHour") String startHourString,
+                                                                @RequestParam(value = "endHour") String endHourString,
+                                                                @RequestParam(value = "startMinute") String startMinuteString,
+                                                                @RequestParam(value = "endMinute") String endMinuteString){
+
+        List<ContactMessageResponse> allMessages = contactMessageService.getBetweenTimes(startHourString,startMinuteString,endHourString,endMinuteString);
+
+        return ResponseEntity.ok(allMessages);
+    }
+
+    /*@GetMapping("/getById/{contactMessageId}")
+    public ResponseMessage<ContactMessage> getById(@PathVariable Long contactMessageId){
+
+        return contactMessageService.getById(contactMessageId);
+    }*/
+
+    @GetMapping("/getById/{contactMessageId}")
+    public ResponseMessage<ContactMessageResponse> getById(@PathVariable Long contactMessageId){
+
+        return contactMessageService.getById(contactMessageId);
     }
 
 }

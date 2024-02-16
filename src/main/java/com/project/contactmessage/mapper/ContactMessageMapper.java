@@ -6,6 +6,8 @@ import com.project.contactmessage.dto.ContactMessageResponse;
 import org.springframework.stereotype.Component;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
 
 @Component
 public class ContactMessageMapper {
@@ -23,6 +25,16 @@ public class ContactMessageMapper {
 
         return ContactMessageResponse.builder().name(savedData.getName()).subject(savedData.getSubject()).message(savedData.getMessage())
                 .email(savedData.getEmail()).dateTime(savedData.getLocalDateTime()).build();
+
+    }
+
+
+    public List<ContactMessageResponse> listContactMessagesToContactMessagesResponseList(List<ContactMessage> allContactMessages) {
+        List<ContactMessageResponse> allContactMessagesResponse= new ArrayList<>();
+        for (ContactMessage each:allContactMessages){
+            allContactMessagesResponse.add(contactMessageToResponse(each));
+        }
+        return allContactMessagesResponse;
 
     }
 }
