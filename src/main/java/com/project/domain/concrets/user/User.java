@@ -68,19 +68,19 @@ public class User {
     private BankCard bankCard;
 
     @JsonIgnore
-    @OneToMany(mappedBy = "customer")
+    @OneToMany(mappedBy = "customer",cascade = CascadeType.REMOVE)
     private List<ShoppingCart> shoppingCarts;
 
     @JsonIgnore
-    @OneToMany(mappedBy = "customer")
+    @OneToMany(mappedBy = "customer",cascade = CascadeType.REMOVE)
     private List<BalanceHistory> balanceHistories;
 
     @JsonIgnore
-    @OneToMany(mappedBy = "customer")
+    @OneToMany(mappedBy = "customer",cascade = CascadeType.REMOVE)
     private List<BonusHistory> bonusHistories;
 
     @JsonIgnore
-    @OneToMany(mappedBy = "customer")
+    @OneToMany(mappedBy = "customer",cascade = CascadeType.REMOVE)
     private List<PurchasedProductHistory> purchasedProductHistories;
 
     @OneToOne

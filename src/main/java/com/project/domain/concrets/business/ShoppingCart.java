@@ -23,11 +23,11 @@ public class ShoppingCart {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @OneToMany
+    @ManyToOne
     @JoinColumn(name = "userId")
     private User customer;
 
-    @OneToMany
+    @OneToMany(mappedBy = "shoppingCart",cascade = CascadeType.REMOVE)
     private List<Product> productList;
 
     private boolean isPaid;

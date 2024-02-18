@@ -28,7 +28,6 @@ public class ContactMessageMapper {
 
     }
 
-
     public List<ContactMessageResponse> listContactMessagesToContactMessagesResponseList(List<ContactMessage> allContactMessages) {
         List<ContactMessageResponse> allContactMessagesResponse= new ArrayList<>();
         for (ContactMessage each:allContactMessages){

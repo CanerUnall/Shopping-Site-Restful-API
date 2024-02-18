@@ -27,4 +27,6 @@ public class UserRole {
 
     private String roleName;
 
+    @OneToOne(mappedBy = "userRole")
+    private User user;
 }
