@@ -18,12 +18,12 @@ public interface ContactMessageRepository extends JpaRepository<ContactMessage, 
 
     Page<ContactMessage> findByEmail(String email, Pageable pageable);
 
-    @Query("SELECT c FROM ContactMessage c WHERE FUNCTION('DATE',c.dateTime) BETWEEN ?1 AND ?2")
+    @Query("SELECT c FROM ContactMessage c WHERE FUNCTION('DATE', c.dateTime) BETWEEN ?1 AND ?2")
     List<ContactMessage> findMessagesBetweenDates(LocalDate beginDate, LocalDate endDate);
 
     @Query("SELECT c FROM ContactMessage c WHERE " +
             "(EXTRACT(HOUR FROM c.dateTime) BETWEEN :startHour AND :endHour) AND " +
-            "(EXTRACT(HOUR FROM c.dateTime) != :starHour OR EXTRACT(MINUTE FROM c.dateTime) >= :startMinute) AND " +
+            "(EXTRACT(HOUR FROM c.dateTime) != :startHour OR EXTRACT(MINUTE FROM c.dateTime) >= :startMinute) AND " +
             "(EXTRACT(HOUR FROM c.dateTime) != :endHour OR EXTRACT(MINUTE FROM c.dateTime) <= :endMinute)")
     List<ContactMessage> findMessagesBetweenTimes(@Param("startHour") int startHour, @Param("startMinute") int startMinute,
                                                   @Param("endHour") int endHour, @Param("endMinute") int endMinute);

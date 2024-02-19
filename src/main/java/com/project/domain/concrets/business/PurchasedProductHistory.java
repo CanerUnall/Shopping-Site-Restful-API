@@ -26,7 +26,12 @@ public class PurchasedProductHistory {
     @JoinColumn(name = "user_Id")
     private User customer;
 
-    @OneToMany
+    @ManyToMany
+    @JoinTable(
+            name = "Purchased_Product", // Ara tablonun adı
+            joinColumns = @JoinColumn(name = "product_history_id"), // Ara tablodaki satın alım geçmişi ilişkilendirme sütunu
+            inverseJoinColumns = @JoinColumn(name = "product_id") // Ara tablodaki ürün ilişkilendirme sütunu
+    )
     private List<Product> allProduct;
 
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd HH:mm")

@@ -7,6 +7,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Data
 @Entity
@@ -28,9 +29,16 @@ public class Product {
     private boolean discount;
 
     @Enumerated(EnumType.STRING)
+    @Column(length = 30)
     private CategoryNames categoryNames;
 
     @ManyToOne
-    @JoinColumn(name = "productList")
+    @JoinColumn(name = "shopping_cart_id")
     private ShoppingCart shoppingCart;
+
+    @ManyToMany(mappedBy = "allProduct")
+    private List<PurchasedProductHistory> purchasedProductHistories;
+
+    @OneToMany(mappedBy = "product", cascade = CascadeType.ALL)
+    private List<ProductInfo> productInfoList;
 }

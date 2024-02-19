@@ -16,7 +16,7 @@ public class ContactMessageMapper {
 
         return ContactMessage.builder().name(contactMessageRequest.getName()).subject(contactMessageRequest.getSubject())
                 .message(contactMessageRequest.getMessage()).email(contactMessageRequest.getEmail())
-                .localDateTime(LocalDateTime.now()).build();
+                .dateTime(LocalDateTime.now()).build();
 
     }
 
@@ -24,7 +24,7 @@ public class ContactMessageMapper {
     public ContactMessageResponse contactMessageToResponse(ContactMessage savedData) {
 
         return ContactMessageResponse.builder().name(savedData.getName()).subject(savedData.getSubject()).message(savedData.getMessage())
-                .email(savedData.getEmail()).dateTime(savedData.getLocalDateTime()).build();
+                .email(savedData.getEmail()).dateTime(savedData.getDateTime()).build();
 
     }
 

@@ -14,19 +14,16 @@ import javax.persistence.*;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-@Builder(toBuilder = true)
+@Builder
 public class UserRole {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "role_id")
     private Integer id;
 
-    @OneToOne(mappedBy = "userRole")
     @Enumerated(EnumType.STRING)
-    @Column(length = 25)
     private RoleType roleType;
 
     private String roleName;
 
-    @OneToOne(mappedBy = "userRole")
-    private User user;
 }

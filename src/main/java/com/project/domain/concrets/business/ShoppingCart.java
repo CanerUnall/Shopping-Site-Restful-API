@@ -9,7 +9,6 @@ import lombok.NoArgsConstructor;
 import javax.persistence.*;
 import java.util.List;
 
-//TODO burayi embedable yapsam mi?
 
 @Data
 @NoArgsConstructor
@@ -28,7 +27,7 @@ public class ShoppingCart {
     private User customer;
 
     @OneToMany(mappedBy = "shoppingCart",cascade = CascadeType.REMOVE)
-    private List<Product> productList;
+    private List<ProductInfo> productList;
 
     private boolean isPaid;
 

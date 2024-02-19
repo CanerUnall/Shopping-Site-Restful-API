@@ -39,6 +39,6 @@ public class ContactMessage implements Serializable {
     private String message;
 
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd HH:mm", timezone = "US")
-    private LocalDateTime localDateTime;
+    private LocalDateTime dateTime;
 
 }
