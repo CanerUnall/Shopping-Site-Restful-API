@@ -64,7 +64,7 @@ public class ContactMessageController {
 
     @GetMapping("getBetweenDates")
     public ResponseMessage<List<ContactMessageResponse>> getBetweenDates(@RequestParam(value = "beginDate") String beginDateString,
-                                                                 @RequestParam(value = "enDate") String endDateString){
+                                                                 @RequestParam(value = "endDate") String endDateString){
         return contactMessageService.getBetweenDates(beginDateString,endDateString);
     }
 
