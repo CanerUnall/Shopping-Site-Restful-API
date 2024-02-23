@@ -1,4 +1,4 @@
-package com.project.service;
+package com.project.service.authentication;
 
 import com.project.domain.concrets.user.User;
 import com.project.exception.BadRequestException;
@@ -15,7 +15,6 @@ import com.project.repository.user.UserRepository;
 import com.project.security.jwt.JwtUtils;
 import com.project.security.service.UserDetailsImpl;
 import lombok.RequiredArgsConstructor;
-import org.hibernate.cache.spi.support.SimpleTimestamper;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -109,7 +108,7 @@ public class AuthenticationService {
         User user = userRepository.findByUsernameEquals(userName);
 
         if (Boolean.TRUE.equals(user.getBuilt_in())){
-            throw new BadRequestException(ExceptionMessages.NOT_PERMITTED_THIS_MESSAGES);
+            throw new BadRequestException(ExceptionMessages.NOT_PERMITTED_THIS_OPERATION);
         }
 
         if (!passwordEncoder.matches(updatePasswordRequest.getOldPassword(),user.getPassword())){
@@ -128,7 +127,7 @@ public class AuthenticationService {
         User user = userRepository.findByUsernameEquals(userName);
 
         if (Boolean.TRUE.equals(user.getBuilt_in())){
-            throw new BadRequestException(ExceptionMessages.NOT_PERMITTED_THIS_MESSAGES);
+            throw new BadRequestException(ExceptionMessages.NOT_PERMITTED_THIS_OPERATION);
         }
 
         if (!passwordEncoder.matches(updatePasswordRequest.getOldPassword(),user.getPassword())){

@@ -1,14 +1,12 @@
-package com.project.controller;
+package com.project.controller.authentication;
 
-import com.project.payload.messages.SuccessMessages;
 import com.project.payload.request.authentication.LoginRequest;
 import com.project.payload.request.business.UpdatePasswordRequest;
 import com.project.payload.response.authentication.AuthResponse;
 import com.project.payload.response.business.ResponseMessage;
 import com.project.payload.response.user.UserResponse;
-import com.project.service.AuthenticationService;
+import com.project.service.authentication.AuthenticationService;
 import lombok.RequiredArgsConstructor;
-import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 

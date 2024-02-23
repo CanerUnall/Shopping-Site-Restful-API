@@ -47,7 +47,7 @@ public class User {
     private String password;
 
     @Column(unique = true)
-    private String PhoneNumber;
+    private String phoneNumber;
 
     @Column(unique = true)
     private String email;
@@ -55,6 +55,10 @@ public class User {
     private Boolean built_in;//eger dokunulmasini istemedigim bir user olursa bunu true yap.
 
     private int customerNumber;
+
+    private int sellerNumber;
+
+    private String CompanyName;
 
     private boolean isActive;
 
