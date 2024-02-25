@@ -12,7 +12,6 @@ import java.time.LocalDate;
 
 @Data
 @NoArgsConstructor
-@AllArgsConstructor
 @SuperBuilder
 public abstract class BaseUserRequest {
 

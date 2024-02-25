@@ -8,7 +8,7 @@ public class ExceptionMessages {
 
     public static final String PASSWORD_NOT_MATCHED = "Your old password is wrong";
 
-    public static final String ALREADY_REGISTER_USERNAME = "User with username %s is already registered";
+    public static final String ALREADY_REGISTER_USERNAME = "User with userName %s is already registered";
     public static final String ALREADY_REGISTER_SSN = "User with ssn %s is already registered";
     public static final String ALREADY_REGISTER_PHONE_NUMBER = "User with phone number %s is already registered";
     public static final String ALREADY_REGISTER_EMAIL = "User with email %s is already registered";

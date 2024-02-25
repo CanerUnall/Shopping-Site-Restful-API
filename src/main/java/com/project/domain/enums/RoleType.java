@@ -1,5 +1,8 @@
 package com.project.domain.enums;
 
+import lombok.Getter;
+
+@Getter
 public enum RoleType {
 //    GUEST_CUSTOMER,
     CUSTOMER(0),
@@ -8,13 +11,10 @@ public enum RoleType {
     MANAGER(3),
     ADMIN(4);
 
-    int numberOfStairs;
+    final int numberOfStairs;
 
     RoleType(int numberOfStairs) {
         this.numberOfStairs = numberOfStairs;
     }
 
-    public int getNumberOfStairs() {
-        return numberOfStairs;
-    }
 }

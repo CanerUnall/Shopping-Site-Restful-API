@@ -9,7 +9,9 @@ import com.project.payload.response.user.SellerResponse;
 import com.project.payload.response.user.UserResponse;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.stereotype.Component;
 
+@Component
 @RequiredArgsConstructor
 public class UserMapper {
 
@@ -52,7 +54,8 @@ public class UserMapper {
     public User mapUserRequestToUserForUpdateOwnInfo(UserRequestWithoutPassword userRequest) {
 
         return User.builder().userName(userRequest.getUserName()).name(userRequest.getName()).surname(userRequest.getSurname())
-                .ssn(userRequest.getSsn()).birthDay(userRequest.getBirthDay()).birthPlace(userRequest.getBirthPlace()).phoneNumber(userRequest.getPhoneNumber()).gender(userRequest.getGender())
+                .ssn(userRequest.getSsn()).birthDay(userRequest.getBirthDay()).birthPlace(userRequest.getBirthPlace())
+                .phoneNumber(userRequest.getPhoneNumber()).gender(userRequest.getGender())
                 .email(userRequest.getEmail()).build();
     }
 }

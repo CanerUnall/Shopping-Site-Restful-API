@@ -2,10 +2,11 @@ package com.project.payload.mappers;
 
 import com.project.exception.ResourceNotFoundException;
 import com.project.payload.response.authentication.AuthResponse;
+import org.springframework.stereotype.Component;
 
 import java.util.Optional;
 import java.util.Set;
-
+@Component
 public class AuthenticationMapper {
 
 

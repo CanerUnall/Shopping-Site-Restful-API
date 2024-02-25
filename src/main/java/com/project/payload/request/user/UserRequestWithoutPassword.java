@@ -11,6 +11,5 @@ import lombok.experimental.SuperBuilder;
 @Setter
 @SuperBuilder
 @NoArgsConstructor
-@AllArgsConstructor
 public class UserRequestWithoutPassword extends BaseUserRequest {
 }

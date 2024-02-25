@@ -24,7 +24,7 @@ public class UserController {
 
 
     @PostMapping("/save/{userRole}")
-    @PreAuthorize("hasAnsAuthority('ADMIN')")
+    @PreAuthorize("hasAnyAuthority('ADMIN')")
     public ResponseEntity<ResponseMessage<UserResponse>> saveUser(@Valid @RequestBody UserRequest userRequest,
                                                                   @PathVariable String userRole) {
         return new ResponseEntity<>(userService.saveUser(userRequest, userRole), HttpStatus.OK);
@@ -32,14 +32,14 @@ public class UserController {
 
 
     @GetMapping("/getUserById/{userId}")
-    @PreAuthorize("hasAnsAuthority('ADMIN','MANAGER','ASSISTANT_MANAGER')")
+    @PreAuthorize("hasAnyAuthority('ADMIN','MANAGER','ASSISTANT_MANAGER')")
     public ResponseMessage<BaseUserResponse> getUserById(@PathVariable Long userId) {
 
         return userService.getUserById(userId);
     }
 
     @GetMapping("/getAllUser/{userRole}")
-    @PreAuthorize("hasAnsAuthority('ADMIN')")
+    @PreAuthorize("hasAnyAuthority('ADMIN')")
     public ResponseEntity<Page<UserResponse>> getAllUserWithRole(@PathVariable String userRole,
                                                                  @RequestParam(value = "page", defaultValue = "0") int page,
                                                                  @RequestParam(value = "size", defaultValue = "20") int size,
@@ -50,20 +50,20 @@ public class UserController {
     }
 
     @DeleteMapping("/delete/{userId}")
-    @PreAuthorize("hasAnsAuthority('ADMIN','MANAGER','ASSISTANT_MANAGER')")
+    @PreAuthorize("hasAnyAuthority('ADMIN','MANAGER','ASSISTANT_MANAGER')")
     public ResponseMessage<String> deleteUserById(@PathVariable Long userId, HttpServletRequest request) {
         return userService.deleteUserById(userId, request);
     }
 
     @PutMapping("/update/{userId}")
-    @PreAuthorize("hasAnsAuthority('ADMIN')")
+    @PreAuthorize("hasAnyAuthority('ADMIN')")
     public ResponseEntity<BaseUserResponse> updateUserWithId(@Valid @RequestBody UserRequest userRequest,
                                                              @PathVariable Long userId){
         return userService.updateUser(userRequest,userId);
     }
 
     @PatchMapping("/updateUser")
-    @PreAuthorize("hasAnsAuthority('ADMIN','MANAGER','ASSISTANT_MANAGER','SELLER','CUSTOMER')")
+    @PreAuthorize("hasAnyAuthority('ADMIN','MANAGER','ASSISTANT_MANAGER','SELLER','CUSTOMER')")
     private ResponseMessage<String> updateUser(@Valid @RequestBody UserRequestWithoutPassword userRequestWithoutPassword,
                                                HttpServletRequest request){
         return userService.updateUserOwnInfo(userRequestWithoutPassword,request);

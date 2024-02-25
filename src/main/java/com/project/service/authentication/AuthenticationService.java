@@ -97,7 +97,7 @@ public class AuthenticationService {
         return ResponseEntity.ok(userResponse);
     }*/
     public ResponseMessage<UserResponse> findByUserName(Object userName) {
-        User user = userRepository.findByUsernameEquals((String) userName);
+        User user = userRepository.findByUserNameEquals((String) userName);
         UserResponse userResponse= userMapper.mapUserToUserResponse(user);
         return ResponseMessage.<UserResponse>builder().object(userResponse).httpStatus(HttpStatus.OK).build();
     }
@@ -124,7 +124,7 @@ public class AuthenticationService {
     }*/
     public ResponseMessage<String> updatePassword(UpdatePasswordRequest updatePasswordRequest, HttpServletRequest request) {
         String userName= (String) request.getAttribute("userName");
-        User user = userRepository.findByUsernameEquals(userName);
+        User user = userRepository.findByUserNameEquals(userName);
 
         if (Boolean.TRUE.equals(user.getBuilt_in())){
             throw new BadRequestException(ExceptionMessages.NOT_PERMITTED_THIS_OPERATION);

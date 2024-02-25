@@ -22,11 +22,14 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
 import javax.servlet.http.HttpServletRequest;
+import java.util.List;
 
 @Service
+@Component
 @RequiredArgsConstructor
 public class UserService {
 
@@ -88,7 +91,7 @@ public class UserService {
 
         String userName = (String) request.getAttribute("userName");
 
-        User user1 = userRepository.findByUsernameEquals(userName);
+        User user1 = userRepository.findByUserNameEquals(userName);
 
         methodHelper.checkBuild_inUser(user);
 
@@ -120,7 +123,7 @@ public class UserService {
     public ResponseMessage<String> updateUserOwnInfo(UserRequestWithoutPassword userRequestWithoutPassword, HttpServletRequest request) {
 
         String userName = (String) request.getAttribute("userName");
-        User user = userRepository.findByUsernameEquals(userName);
+        User user = userRepository.findByUserNameEquals(userName);
 
         methodHelper.checkBuild_inUser(user);
 
@@ -131,5 +134,10 @@ public class UserService {
         userRepository.save(user1);
 
         return ResponseMessage.<String>builder().object(SuccessMessages.USER_UPDATED_SUCCESSFULLY).build();
+    }
+
+
+    public List<User> getAllAdmins() {
+        return userRepository.findAll(RoleType.ADMIN);
     }
 }
