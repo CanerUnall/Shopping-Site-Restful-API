@@ -53,7 +53,7 @@ public class AuthenticationController {
         return ResponseEntity.ok(SuccessMessages.PASSWORD_UPDATED_RESPONSE_MESSAGE);
     }*/
     @PatchMapping("/updatePassword")
-    @PreAuthorize("hasAnyAuthority('MANAGER','ASSISTANT_MANAGER','ADMIN','CUSTOMER')")
+    @PreAuthorize("hasAnyAuthority('MANAGER','ASSISTANT_MANAGER','ADMIN','CUSTOMER','SELLER')")
     public ResponseMessage<String> updatePassword(@Valid @RequestBody UpdatePasswordRequest updatePasswordRequest,
                                                  HttpServletRequest request) {
 

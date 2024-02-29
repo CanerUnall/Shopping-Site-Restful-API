@@ -15,6 +15,7 @@ public class ExceptionMessages {
 
     public static final String ROLE_NOT_FOUND = "Role not found";
     public static final String USER_NOT_FOUND = "User not found";
-
-
+    public static final String SELLER_NOT_FOUND = "Seller not found";
+    public static final String ROLE_TYPES_ARE_NOT_EQUALS = "Role types arent equals";
+    public static final String COMPANY_NOT_FOUND = "Company with company name %s is not found";
 }

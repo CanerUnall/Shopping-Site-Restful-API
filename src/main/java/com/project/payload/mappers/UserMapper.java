@@ -1,6 +1,10 @@
 package com.project.payload.mappers;
 
 import com.project.domain.concrets.user.User;
+import com.project.payload.request.BaseUserRequest;
+import com.project.payload.request.BaseUserRequestWithPassword;
+import com.project.payload.request.user.SellerRequest;
+import com.project.payload.request.user.SellerRequestWithoutPassword;
 import com.project.payload.request.user.UserRequest;
 import com.project.payload.request.user.UserRequestWithoutPassword;
 import com.project.payload.response.BaseUserResponse;
@@ -51,7 +55,7 @@ public class UserMapper {
                 .ssn(userRequest.getSsn()).birthDay(userRequest.getBirthDay()).birthPlace(userRequest.getBirthPlace()).phoneNumber(userRequest.getPhoneNumber()).gender(userRequest.getGender())
                 .email(userRequest.getEmail()).built_in(userRequest.getBuilt_in()).build();
     }
-    public User mapUserRequestToUserForUpdateOwnInfo(User user,UserRequestWithoutPassword userRequest) {
+    public User mapUserRequestToUserForUpdateOwnInfo(User user, UserRequestWithoutPassword userRequest) {
         user.setUserName(userRequest.getUserName());
         user.setBirthDay(userRequest.getBirthDay());
         user.setEmail(userRequest.getEmail());
@@ -61,6 +65,40 @@ public class UserMapper {
         user.setName(userRequest.getName());
         user.setSurname(userRequest.getSurname());
         user.setSsn(userRequest.getSsn());
+
+        return user;
+
+    }
+
+    public User mapSellerRequestToUser(SellerRequest sellerRequest) {
+
+        return User.builder().userName(sellerRequest.getUserName()).name(sellerRequest.getName()).surname(sellerRequest.getSurname())
+                .password(passwordEncoder.encode(sellerRequest.getPassword()))//passwordu hashladim
+                .ssn(sellerRequest.getSsn()).birthDay(sellerRequest.getBirthDay()).birthPlace(sellerRequest.getBirthPlace()).phoneNumber(sellerRequest.getPhoneNumber())
+                .gender(sellerRequest.getGender()).email(sellerRequest.getEmail()).built_in(sellerRequest.getBuilt_in())
+                .companyName(sellerRequest.getCompanyName()).sellerNumber(sellerRequest.getSellerNumber()).build();
+
+
+    }
+
+    public User mapSellerRequestToUserForUpdate(User seller, SellerRequest sellerRequest) {
+
+        return mapSellerRequestToUser(sellerRequest).toBuilder().id(seller.getId()).userRole(seller.getUserRole()).build();
+
+    }
+
+    public User mapSellerRequestToUserForUpdateOwnInfo(User user, SellerRequestWithoutPassword sellerRequestWithoutPassword) {
+        user.setUserName(sellerRequestWithoutPassword.getUserName());
+        user.setBirthDay(sellerRequestWithoutPassword.getBirthDay());
+        user.setEmail(sellerRequestWithoutPassword.getEmail());
+        user.setPhoneNumber(sellerRequestWithoutPassword.getPhoneNumber());
+        user.setBirthPlace(sellerRequestWithoutPassword.getBirthPlace());
+        user.setGender(sellerRequestWithoutPassword.getGender());
+        user.setName(sellerRequestWithoutPassword.getName());
+        user.setSurname(sellerRequestWithoutPassword.getSurname());
+        user.setSsn(sellerRequestWithoutPassword.getSsn());
+        user.setCompanyName(sellerRequestWithoutPassword.getCompanyName());
+        user.setSellerNumber(sellerRequestWithoutPassword.getSellerNumber());
 
         return user;
 

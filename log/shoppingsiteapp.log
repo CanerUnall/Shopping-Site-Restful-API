@@ -141,4 +141,7 @@
 	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)
 	at java.base/java.lang.Thread.run(Thread.java:842)
 "2024-02-29 14:26:51,893 ERROR [http-nio-8080-exec-2] com.project.security.jwt.AuthEntryPointJwt:Unauthorized error : Full authentication is required to access this resource
+""2024-02-29 14:40:57,022 INFO  [SpringApplicationShutdownHook] org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean:Closing JPA EntityManagerFactory for persistence unit 'default'
+""2024-02-29 14:40:57,025 INFO  [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource:HikariPool-1 - Shutdown initiated...
+""2024-02-29 14:40:57,033 INFO  [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource:HikariPool-1 - Shutdown completed.
 "

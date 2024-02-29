@@ -63,7 +63,7 @@ public class UserController {
     }
 
     @PatchMapping("/updateUser")
-    @PreAuthorize("hasAnyAuthority('ADMIN','MANAGER','ASSISTANT_MANAGER','CUSTOMER','SELLER')")
+    @PreAuthorize("hasAnyAuthority('ADMIN','MANAGER','ASSISTANT_MANAGER')")
     public ResponseMessage<String> updateUser(@RequestBody @Valid UserRequestWithoutPassword userRequestWithoutPassword,
                                                HttpServletRequest request){
         return userService.updateUserOwnInfo(userRequestWithoutPassword,request);

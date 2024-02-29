@@ -3,10 +3,7 @@ package com.project.domain.concrets.user;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.project.domain.concrets.business.BalanceHistory;
-import com.project.domain.concrets.business.BonusHistory;
-import com.project.domain.concrets.business.PurchasedProductHistory;
-import com.project.domain.concrets.business.ShoppingCart;
+import com.project.domain.concrets.business.*;
 import com.project.domain.enums.Gender;
 import lombok.*;
 
@@ -58,7 +55,7 @@ public class User {
 
     private int sellerNumber;
 
-    private String CompanyName;
+    private String companyName;
 
     private boolean isActive;
 
@@ -90,4 +87,7 @@ public class User {
     @OneToOne
     @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     private UserRole userRole;
+
+    //TODO buranin iliski turlerini vs ayarla
+    private List<Product> sellerProduct;
 }

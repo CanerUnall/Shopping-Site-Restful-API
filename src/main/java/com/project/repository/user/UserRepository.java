@@ -26,6 +26,8 @@ public interface UserRepository extends JpaRepository<User, Long> {
 
     @Query("SELECT u FROM User u WHERE u.userRole.roleType = ?1")
     List<User> findAll(RoleType roleType);
+    
+    List<User> findAllByCompanyName(String companyName);
 
-
+    boolean existsCompanyName(String companyName);
 }
