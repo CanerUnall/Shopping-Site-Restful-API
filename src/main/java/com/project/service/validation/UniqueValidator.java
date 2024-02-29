@@ -4,6 +4,7 @@ import com.project.exception.ConflictException;
 import com.project.payload.messages.ExceptionMessages;
 import com.project.payload.request.BaseUserRequest;
 import com.project.payload.request.user.UserRequest;
+import com.project.payload.request.user.UserRequestWithoutPassword;
 import com.project.repository.user.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;

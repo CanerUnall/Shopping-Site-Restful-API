@@ -95,7 +95,8 @@ public class UserService {
 
         methodHelper.checkBuild_inUser(user);
 
-        if (! (user1.getUserRole().getRoleType().getNumberOfStairs()>user.getUserRole().getRoleType().getNumberOfStairs())){
+
+        if (! (user1.getUserRole().getRoleType().getNumberOfStairs()>=user.getUserRole().getRoleType().getNumberOfStairs())){
             throw  new BadRequestException(ExceptionMessages.NOT_PERMITTED_THIS_OPERATION);
         }
 
@@ -129,11 +130,11 @@ public class UserService {
 
         uniqueValidator.checkUniqueCondition(userRequestWithoutPassword);
 
-        User user1= userMapper.mapUserRequestToUserForUpdateOwnInfo(userRequestWithoutPassword);
+        User user1= userMapper.mapUserRequestToUserForUpdateOwnInfo(user,userRequestWithoutPassword);
 
         userRepository.save(user1);
 
-        return ResponseMessage.<String>builder().object(SuccessMessages.USER_UPDATED_SUCCESSFULLY).build();
+        return ResponseMessage.<String>builder().object(SuccessMessages.USER_UPDATED_SUCCESSFULLY).httpStatus(HttpStatus.OK).build();
     }
 
 

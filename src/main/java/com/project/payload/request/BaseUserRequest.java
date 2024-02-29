@@ -13,6 +13,7 @@ import java.time.LocalDate;
 @Data
 @NoArgsConstructor
 @SuperBuilder
+@AllArgsConstructor
 public abstract class BaseUserRequest {
 
     @NotNull(message = "Please enter your userName")

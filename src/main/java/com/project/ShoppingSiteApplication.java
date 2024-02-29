@@ -41,23 +41,23 @@ public class ShoppingSiteApplication implements CommandLineRunner{
 			userRoleService.saveUserRole(admin);
 
 			UserRole manager = new UserRole();
-			admin.setRoleType(RoleType.MANAGER);
-			admin.setRoleName("Manager");
+			manager.setRoleType(RoleType.MANAGER);
+			manager.setRoleName("Manager");
 			userRoleService.saveUserRole(manager);
 
 			UserRole assistantManager = new UserRole();
-			admin.setRoleType(RoleType.ASSISTANT_MANAGER);
-			admin.setRoleName("Assistant Manager");
+			assistantManager.setRoleType(RoleType.ASSISTANT_MANAGER);
+			assistantManager.setRoleName("Assistant Manager");
 			userRoleService.saveUserRole(assistantManager);
 
 			UserRole customer = new UserRole();
-			admin.setRoleType(RoleType.CUSTOMER);
-			admin.setRoleName("Customer");
+			customer.setRoleType(RoleType.CUSTOMER);
+			customer.setRoleName("Customer");
 			userRoleService.saveUserRole(customer);
 
 			UserRole seller = new UserRole();
-			admin.setRoleType(RoleType.SELLER);
-			admin.setRoleName("Seller");
+			seller.setRoleType(RoleType.SELLER);
+			seller.setRoleName("Seller");
 			userRoleService.saveUserRole(seller);
 		}
 

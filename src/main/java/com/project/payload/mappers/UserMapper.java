@@ -51,11 +51,18 @@ public class UserMapper {
                 .ssn(userRequest.getSsn()).birthDay(userRequest.getBirthDay()).birthPlace(userRequest.getBirthPlace()).phoneNumber(userRequest.getPhoneNumber()).gender(userRequest.getGender())
                 .email(userRequest.getEmail()).built_in(userRequest.getBuilt_in()).build();
     }
-    public User mapUserRequestToUserForUpdateOwnInfo(UserRequestWithoutPassword userRequest) {
+    public User mapUserRequestToUserForUpdateOwnInfo(User user,UserRequestWithoutPassword userRequest) {
+        user.setUserName(userRequest.getUserName());
+        user.setBirthDay(userRequest.getBirthDay());
+        user.setEmail(userRequest.getEmail());
+        user.setPhoneNumber(userRequest.getPhoneNumber());
+        user.setBirthPlace(userRequest.getBirthPlace());
+        user.setGender(userRequest.getGender());
+        user.setName(userRequest.getName());
+        user.setSurname(userRequest.getSurname());
+        user.setSsn(userRequest.getSsn());
 
-        return User.builder().userName(userRequest.getUserName()).name(userRequest.getName()).surname(userRequest.getSurname())
-                .ssn(userRequest.getSsn()).birthDay(userRequest.getBirthDay()).birthPlace(userRequest.getBirthPlace())
-                .phoneNumber(userRequest.getPhoneNumber()).gender(userRequest.getGender())
-                .email(userRequest.getEmail()).build();
+        return user;
+
     }
 }

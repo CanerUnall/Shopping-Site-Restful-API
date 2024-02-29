@@ -17,15 +17,15 @@ import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 
 @RestController
-@RequiredArgsConstructor
 @RequestMapping("/user")
+@RequiredArgsConstructor
 public class UserController {
     private final UserService userService;
 
 
     @PostMapping("/save/{userRole}")
     @PreAuthorize("hasAnyAuthority('ADMIN')")
-    public ResponseEntity<ResponseMessage<UserResponse>> saveUser(@Valid @RequestBody UserRequest userRequest,
+    public ResponseEntity<ResponseMessage<UserResponse>> saveUser(@RequestBody @Valid UserRequest userRequest,
                                                                   @PathVariable String userRole) {
         return new ResponseEntity<>(userService.saveUser(userRequest, userRole), HttpStatus.OK);
     }
@@ -57,14 +57,14 @@ public class UserController {
 
     @PutMapping("/update/{userId}")
     @PreAuthorize("hasAnyAuthority('ADMIN')")
-    public ResponseEntity<BaseUserResponse> updateUserWithId(@Valid @RequestBody UserRequest userRequest,
+    public ResponseEntity<BaseUserResponse> updateUserWithId(@RequestBody @Valid UserRequest userRequest,
                                                              @PathVariable Long userId){
         return userService.updateUser(userRequest,userId);
     }
 
     @PatchMapping("/updateUser")
-    @PreAuthorize("hasAnyAuthority('ADMIN','MANAGER','ASSISTANT_MANAGER','SELLER','CUSTOMER')")
-    private ResponseMessage<String> updateUser(@Valid @RequestBody UserRequestWithoutPassword userRequestWithoutPassword,
+    @PreAuthorize("hasAnyAuthority('ADMIN','MANAGER','ASSISTANT_MANAGER','CUSTOMER','SELLER')")
+    public ResponseMessage<String> updateUser(@RequestBody @Valid UserRequestWithoutPassword userRequestWithoutPassword,
                                                HttpServletRequest request){
         return userService.updateUserOwnInfo(userRequestWithoutPassword,request);
 
